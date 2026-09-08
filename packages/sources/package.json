@@ -1,0 +1,10 @@
+{
+  "name": "@jobscrapper/sources",
+  "version": "1.0.0",
+  "description": "Job-site scrapers behind one BaseScraper interface",
+  "main": "registry.js",
+  "license": "MIT",
+  "dependencies": {
+    "@jobscrapper/core": "*"
+  }
+}

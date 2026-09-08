@@ -1,0 +1,7 @@
+{
+  "name": "@jobscrapper/storage",
+  "version": "1.0.0",
+  "description": "SQLite (node:sqlite) persistence with JSON fallback",
+  "main": "repository.js",
+  "license": "MIT"
+}

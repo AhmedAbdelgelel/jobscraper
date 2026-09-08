@@ -1,0 +1,7 @@
+{
+  "name": "@jobscrapper/config",
+  "version": "1.0.0",
+  "description": "Defaults, per-user config file, filter profiles, env loader",
+  "main": "config.js",
+  "license": "MIT"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "jobscrapper",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Autonomous Node.js backend job scraper (LinkedIn, Wuzzuf, Indeed, Glassdoor)",
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "scrape": "node apps/cli/index.js",
+    "start": "node apps/cli/index.js",
+    "export": "node apps/cli/export.js",
+    "refilter": "node apps/cli/refilter.js",
+    "backfill": "node apps/cli/backfill.js",
+    "test": "node --test test/**/*.test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,7 @@
+{
+  "name": "@jobscrapper/core",
+  "version": "1.0.0",
+  "description": "Crawling pipeline: filters, classifier, normalizer, dedupe, retry, gate",
+  "main": "crawler.js",
+  "license": "MIT"
+}

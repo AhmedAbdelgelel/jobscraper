@@ -1,0 +1,15 @@
+{
+  "name": "@jobscrapper/cli",
+  "version": "1.0.0",
+  "description": "CLI: scrape, export, refilter, backfill",
+  "license": "MIT",
+  "bin": {
+    "jobscrapper": "index.js"
+  },
+  "dependencies": {
+    "@jobscrapper/config": "*",
+    "@jobscrapper/core": "*",
+    "@jobscrapper/sources": "*",
+    "@jobscrapper/storage": "*"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "_comment": "Copy to jobscrapper.config.json and edit. EVERYTHING below is optional — unset keys use built-ins. CLI flags beat this file.",
+  "profile": "egypt-junior",
+  "country": "Egypt",
+  "locations": ["Egypt"],
+  "queries": [
+    "Node.js Backend Developer",
+    "Node.js Backend Engineer",
+    "Junior Node.js Developer",
+    "Junior Backend Developer",
+    "Node.js Developer",
+    "Express.js Developer",
+    "NestJS Developer",
+    "JavaScript Backend Developer"
+  ],
+  "remoteQueries": [
+    "Remote Node.js Developer",
+    "Remote Junior Node.js Developer",
+    "Remote NestJS Developer"
+  ],
+  "profiles": {
+    "egypt-junior": {
+      "experience": { "min": 0, "max": 2 },
+      "maxAgeDays": 90,
+      "remoteOnly": false,
+      "requireFullDescription": false,
+      "titleScope": "node-backend",
+      "techAny": ["node.js", "nodejs", "express", "nestjs", "nest.js", "fastify", "koa", "hapijs", "hapi"],
+      "rejectSeniorTitles": true,
+      "rejectMidTitles": true,
+      "rejectTalentPools": true,
+      "extraSeniorTitles": [],
+      "extraMidTitles": [],
+      "extraRejectPatterns": []
+    }
+  },
+  "sources": {
+    "linkedin": { "enabled": true, "maxPages": 3, "maxJobsPerQuery": 50, "concurrency": 2, "requestDelayMs": 1500, "timeoutMs": 15000, "maxRetries": 5 },
+    "wuzzuf": { "enabled": true, "maxPages": 1, "maxJobsPerQuery": 50, "concurrency": 3, "requestDelayMs": 1200, "timeoutMs": 15000 },
+    "indeed": { "enabled": true, "maxPages": 1, "maxJobsPerQuery": 50, "concurrency": 3, "requestDelayMs": 1500, "timeoutMs": 15000, "maxRetries": 3 },
+    "glassdoor": { "enabled": false },
+    "remoteok": { "enabled": false },
+    "arbeitnow": { "enabled": true, "maxPages": 5 },
+    "remotive": { "enabled": true, "maxPages": 1 }
+  },
+  "experience": { "min": 0, "max": 2 },
+  "scraping": { "maxRetries": 5, "requestTimeout": 15000 },
+  "export": { "ageDays": [1, 7] },
+  "email": { "to": "", "sendAfterScrape": false },
+  "schedule": { "everyHours": 4 }
+}
