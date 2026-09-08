@@ -17,4 +17,10 @@ if (-not $env:GMAIL_USER -and (Test-Path ".env")) {
 node apps/cli/index.js --max-pages 2
 node apps/cli/export.js
 $csv = Get-ChildItem exports/*.csv | Sort-Object LastWriteTime -Descending | Select-Object -First 1
-Send-MailMessage -To $To -From $env:GMAIL_USER -Subject "Jobs digest $($csv.LastWriteTime)" -Body "Latest scrape attached. File: $($csv.Name)" -Attachments $csv.FullName -SmtpServer "smtp.gmail.com" -Port 587 -UseSsl -Credential (New-Object PSCredential($env:GMAIL_USER, (ConvertTo-SecureString $env:GMAIL_APP_PASS -AsPlainText -Force)))
+$m = New-Object Net.Mail.MailMessage($env:GMAIL_USER, $To, "Jobs digest $($csv.LastWriteTime)", "Latest scrape attached. File: $($csv.Name)")
+$a = New-Object Net.Mail.Attachment($csv.FullName); $m.Attachments.Add($a)
+$s = New-Object Net.Mail.SmtpClient('smtp.gmail.com', 587)
+$s.EnableSsl = $true
+$s.Credentials = New-Object Net.NetworkCredential($env:GMAIL_USER, $env:GMAIL_APP_PASS)
+$s.Send($m); $a.Dispose(); $m.Dispose()
+Write-Output 'MAIL_SENT'

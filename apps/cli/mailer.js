@@ -10,11 +10,18 @@ function q(s) {
 }
 
 function buildScript({ to, subject, body, attachment }) {
+  // Uses System.Net.Mail directly: needs no SecureString/Security module
+  // (Send-MailMessage fails where that module can't load) and works on
+  // both Windows PowerShell 5.1 and PowerShell 7.
   return [
     `$u = $env:GMAIL_USER; $p = $env:GMAIL_APP_PASS`,
     `if (-not $u -or -not $p) { Write-Error 'missing-mail-creds'; exit 3 }`,
-    `$c = New-Object PSCredential($u, (ConvertTo-SecureString $p -AsPlainText -Force))`,
-    `Send-MailMessage -To ${q(to)} -From $u -Subject ${q(subject)} -Body ${q(body)} -Attachments ${q(attachment)} -SmtpServer 'smtp.gmail.com' -Port 587 -UseSsl -Credential $c`,
+    `$m = New-Object Net.Mail.MailMessage($u, ${q(to)}, ${q(subject)}, ${q(body)})`,
+    `$a = New-Object Net.Mail.Attachment(${q(attachment)}); $m.Attachments.Add($a)`,
+    `$s = New-Object Net.Mail.SmtpClient('smtp.gmail.com', 587)`,
+    `$s.EnableSsl = $true`,
+    `$s.Credentials = New-Object Net.NetworkCredential($u, $p)`,
+    `$s.Send($m); $a.Dispose(); $m.Dispose()`,
   ].join('; ');
 }
 
