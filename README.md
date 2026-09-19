@@ -1,4 +1,4 @@
-# jobscrapper
+# jobscraper
 
 Finds **junior Node.js backend jobs (0–2 years)** across LinkedIn, Wuzzuf,
 Indeed, Glassdoor, RemoteOK, Arbeitnow and Remotive — then filters, dedupes
